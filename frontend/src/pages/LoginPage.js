@@ -1,4 +1,3 @@
-// frontend/src/pages/LoginPage.js
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';  // Using Link from react-router-dom for navigation
