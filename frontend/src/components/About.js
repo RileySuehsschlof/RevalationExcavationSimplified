@@ -6,7 +6,7 @@ function About() {
       <div className="about-content">
         <div className="about-text">
           <h2 className="aboutH2">About us</h2>
-          <p>
+          <p className="aboutP">
             Revelation Excavation is an owner operated excavation business
             delivering quality and honest service. With 15 years of experience,
             we specialize in all types of excavation bringing efficiency and
