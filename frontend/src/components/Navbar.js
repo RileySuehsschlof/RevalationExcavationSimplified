@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,10 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <a className="site-name">Revelation Excavation</a>
+        <Link to="/" className="logo link">
+          <div className="site-name">Revelation Excavation</div>
+        </Link>
+
 
         <button
           className="hamburger"
@@ -22,12 +26,17 @@ function Navbar() {
         </button>
 
         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-          <li className="nav-item">
-            <a className="nav-link">Account</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link">Login</a>
-          </li>
+          <Link to="/register" className="link">
+            <li className="nav-item">
+              <div className="nav-link">Register</div>
+            </li>
+          </Link>
+          <Link to="/login" className="link">
+            <li className="nav-item">
+              <div className="nav-link">Login</div>
+            </li>
+          </Link>
+
         </ul>
       </div>
     </nav>

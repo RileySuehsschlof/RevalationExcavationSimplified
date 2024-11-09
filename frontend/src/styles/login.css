@@ -1,0 +1,134 @@
+/* Basic styles for the login page background */
+.login-container {
+    background-color: black;
+    /* Background color is black */
+    color: rgb(250, 91, 15);
+    ;
+    /* Text color is orange */
+    height: 100vh;
+    /* Full height of the viewport */
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    font-family: 'Arial', sans-serif;
+    padding: 4rem 2rem 2rem 2rem;
+    /* Padding around the form container */
+    box-sizing: border-box;
+    /* Ensure padding is included in total height/width */
+}
+
+/* Container for the login form and heading */
+.login-form-container {
+    background-color: #333;
+    /* Darker background for the form container */
+    padding: 2rem;
+    /* Padding inside the form container */
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    width: 100%;
+    /* Take full width of parent container */
+    max-width: 400px;
+    /* Max width for form container */
+    box-sizing: border-box;
+    /* Ensure padding and borders are included */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Add subtle shadow for depth */
+    text-align: center;
+    /* Center the heading and form */
+    margin: 0 auto;
+    /* Center form horizontally */
+}
+
+/* Title styling (Login header) */
+h2 {
+    color: rgb(250, 91, 15);
+    ;
+    /* Make the header text orange */
+    margin-bottom: 1rem;
+    /* Add space below the heading */
+}
+
+/* Style the form to be centered inside the container */
+.login-form {
+    padding: 2rem;
+    /* Padding inside the form */
+    width: 100%;
+    /* Form should take up full width of container */
+    box-sizing: border-box;
+    /* Ensure padding and borders are accounted for */
+}
+
+/* Style the form input fields */
+.input-group {
+    margin-bottom: 1.5rem;
+    /* Space between input fields */
+}
+
+.input-group label {
+    display: block;
+    color: rgb(250, 91, 15);
+
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    /* Ensure inputs are full width */
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid rgb(250, 91, 15);
+    ;
+    border-radius: 5px;
+    background-color: #222;
+    /* Dark background for the input fields */
+    color: white;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #ff7f00;
+    /* Focus border color is a lighter orange */
+}
+
+button {
+    width: 100%;
+    /* Button takes up full width of form */
+    padding: 0.8rem;
+    background-color: rgb(250, 91, 15);
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
+}
+
+button:hover {
+    background-color: #ff7f00;
+    /* Slightly lighter orange on hover */
+}
+
+/* Style the employee link below the form */
+.employee-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.employee-link a {
+    color: rgb(250, 91, 15);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.employee-link a:hover {
+    text-decoration: underline;
+}

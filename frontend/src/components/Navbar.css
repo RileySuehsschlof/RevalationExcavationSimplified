@@ -49,6 +49,7 @@
 .nav-item {
   list-style-type: none;
   padding: 0 20px;
+
 }
 
 .nav-link {
@@ -60,6 +61,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+
 }
 
 .nav-link:hover {
@@ -70,6 +72,10 @@
 
 .main-content {
   padding-top: 6rem;
+}
+
+.link {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -91,16 +97,22 @@
     background-color: black;
     padding: 1rem;
     width: 100%;
+
   }
 
   .nav-links.open {
     display: flex;
     border-top: 1px solid orangered;
+
   }
 
   .nav-item {
     width: 100%;
     text-align: center;
     padding: 0.5rem;
+
+
   }
+
+
 }

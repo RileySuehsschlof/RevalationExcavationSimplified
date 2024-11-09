@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import '../styles/login.css';
 import axios from 'axios';
 import { setToken } from '../utils/auth';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const EmployeeLoginPage = () => {
   const [employeeNumber, setEmployeeNumber] = useState('');
@@ -24,55 +26,60 @@ const EmployeeLoginPage = () => {
   };
 
 
-  return (
+  return (<>
+    <Navbar />
     <div className="login-container">
-      <h2>Employee Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="input-group">
-          <label htmlFor="employeeNumber">Employee Number</label>
-          <input
-            type="text"
-            id="employeeNumber"
-            value={employeeNumber}
-            onChange={(e) => setEmployeeNumber(e.target.value)}
-            required
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+      <div className="login-form-container">
+        <h2>Employee Login</h2>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="input-group">
+            <label htmlFor="employeeNumber">Employee Number</label>
+            <input
+              type="text"
+              id="employeeNumber"
+              value={employeeNumber}
+              onChange={(e) => setEmployeeNumber(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="input-group">
-          <label htmlFor="username">User Name</label>
-          <input
-            type="username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <p>{message}</p>
+          <div className="input-group">
+            <label htmlFor="username">User Name</label>
+            <input
+              type="username"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <p>{message}</p>
+      </div>
     </div>
+    <Footer />
+  </>
   );
 };
 

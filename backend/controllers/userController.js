@@ -26,7 +26,10 @@ const loginUser = async (req, res) => {
 
     //if the the username does not exist
     const user = await User.findOne({ username });
-    if (!user) return res.status(400).json({ message: "Invalid Username or Password" });
+    if (!user) return res.status(400).json({ message: "Invalid Username" });
+
+    // user = await User.findOne({ email });
+    // if (!user) return res.status(400).json({ message: "Invalid Email" });
 
     //if the password does not match for the user
     const isMatch = await bcrypt.compare(password, user.password);
