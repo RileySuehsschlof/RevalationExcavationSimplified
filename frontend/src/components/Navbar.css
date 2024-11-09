@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   padding: 0 1rem;
+  border-bottom: 1px solid orangered;
 }
 
 .navbar-container {
@@ -94,6 +95,7 @@
 
   .nav-links.open {
     display: flex;
+    border-top: 1px solid orangered;
   }
 
   .nav-item {
