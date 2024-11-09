@@ -5,23 +5,43 @@ import axios from 'axios';
 import { setToken } from '../utils/auth';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeLoginPage = () => {
   const [employeeNumber, setEmployeeNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [username, setUsername] = useState('');
+  const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { username, password });
+    // try {
+    //   const response = await axios.post('http://localhost:5000/api/users/login', { emailOrUsername, password });
 
+    //   setToken(response.data.token);//Saving the token
+    //   setMessage('Login successful');
+    // } catch (error) {
+    //   setMessage('Invalid Username or Password')
+    // }
+    try {
+
+
+      const response = await axios.post('http://localhost:5000/api/users/login', { emailOrUsername, password });
+
+      // localStorage.setItem('token', response.data.token);
       setToken(response.data.token);//Saving the token
-      setMessage('Login successful');
+
+      setMessage('Login succesful')
+
+      //sends you to the page after login
+      navigate('/');
+
+
     } catch (error) {
-      setMessage('Invalid Username or Password')
+      setMessage(error.response?.data?.message || 'Login failed')
     }
   };
 
@@ -42,7 +62,7 @@ const EmployeeLoginPage = () => {
               required
             />
           </div>
-          <div className="input-group">
+          {/* <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -51,9 +71,9 @@ const EmployeeLoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
+          </div> */}
 
-          <div className="input-group">
+          {/* <div className="input-group">
             <label htmlFor="username">User Name</label>
             <input
               type="username"
@@ -61,6 +81,18 @@ const EmployeeLoginPage = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+            />
+          </div> */}
+
+          {/* Input for Email or Username */}
+          <div className="input-group">
+            <label htmlFor="emailOrUsername">Email or Username</label>
+            <input
+              type="text"
+              id="emailOrUsername"
+              value={emailOrUsername}
+              onChange={(e) => setEmailOrUsername(e.target.value)}
+              placeholder="Enter your email or username"
             />
           </div>
           <div className="input-group">

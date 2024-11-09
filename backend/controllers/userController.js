@@ -21,26 +21,43 @@ const registerUser = async (req, res) => {
 
 //this is to login an existing user
 const loginUser = async (req, res) => {
-    const { username, password } = req.body;
+    const { emailOrUsername, password } = req.body;
+
+    if (!emailOrUsername || !password) {
+        return res.status(400).json({ message: "Please provide email/username and password" });
+    }
+
+    try {
+
+        let user;
+
+        if (emailOrUsername.includes('@')) {
+            user = await User.findOne({ email: emailOrUsername });
+            if (!user) return res.status(400).json({ message: "Invalid Email" });
+        }
+        else {
+            user = await User.findOne({ username: emailOrUsername });
+            if (!user) return res.status(400).json({ message: "Invalid Username" });
+        }
 
 
-    //if the the username does not exist
-    const user = await User.findOne({ username });
-    if (!user) return res.status(400).json({ message: "Invalid Username" });
 
-    // user = await User.findOne({ email });
-    // if (!user) return res.status(400).json({ message: "Invalid Email" });
-
-    //if the password does not match for the user
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid Username or Password" });
+        //if the password does not match for the user
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json({ message: "Invalid Username or Password" });
 
 
-    //if everything is correct, generate a jwt token and send it back to the user
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: '15m'
-    });
-    res.json({ token });
+        //if everything is correct, generate a jwt token and send it back to the user
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+            expiresIn: '15m'
+        });
+        res.json({ token });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server Error" });
+    }
+
+
 };
 
 module.exports = { registerUser, loginUser };
