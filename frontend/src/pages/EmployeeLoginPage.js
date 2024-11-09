@@ -34,10 +34,16 @@ const EmployeeLoginPage = () => {
       // localStorage.setItem('token', response.data.token);
       setToken(response.data.token);//Saving the token
 
-      setMessage('Login succesful')
+      // setMessage('Login succesful')
 
-      //sends you to the page after login
-      navigate('/');
+      // //sends you to the page after login
+      // navigate('/');
+      setMessage('Login successful! Redirecting...');
+
+      // Redirect the user to the admin page
+      setTimeout(() => {
+        navigate('/admin');  // Redirect to admin page after login
+      }, 1500);
 
 
     } catch (error) {

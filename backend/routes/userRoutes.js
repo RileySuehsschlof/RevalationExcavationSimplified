@@ -15,7 +15,7 @@ router.post('/register', registerUser);//register user
 
 router.post('/login', loginUser);//login user 
 
-router.get('/protected', protect, (req, res) => { res.send("welcome to the protected route") });//a protected route
+router.get('/adminPage', protect, (req, res) => { res.send("welcome to the admin page") });//a protected route
 
 
 module.exports = router;
