@@ -10,7 +10,7 @@ connectDB();//connecting to the database
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use('api/users', userRoutes);//Use user Routes
+app.use('/api/users', userRoutes);//Use user Routes
 
 
 

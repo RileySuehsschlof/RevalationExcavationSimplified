@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const { userInfo } = require('os');
+
 
 //defining our user properties
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    email: { type: String, required: true },
+    employeeNumber: { type: String }
+
 });
 
 
