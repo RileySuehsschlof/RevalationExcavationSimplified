@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function GoogleMap() {
+  const apiKey = process.env.REACT_APP_MAP_KEY;
   const [showDirections, setShowDirections] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
   const [error, setError] = useState(null);
@@ -83,7 +84,7 @@ function GoogleMap() {
 
     // Load the Google Maps API
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_GOES_HERE_LOOK_AT_ME&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
     script.async = true;
     script.defer = true;
 
