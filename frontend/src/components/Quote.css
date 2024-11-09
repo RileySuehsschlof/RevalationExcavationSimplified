@@ -1,0 +1,60 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.quoteContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.quoteContainer img {
+  width: 70%;
+  object-fit: cover;
+  display: block;
+  margin-top: 6rem;
+}
+
+.quote {
+  width: 30%;
+  background-color: rgb(250, 91, 15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1rem; /* Add some padding for better text spacing */
+}
+
+.quote p {
+  margin: 0;
+}
+
+.quoteP {
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 30px;
+}
+
+@media (max-width: 768px) {
+  .quoteContainer {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .quoteContainer img {
+    width: 100%;
+  }
+
+  .quote {
+    width: 100%;
+  }
+}

@@ -1,0 +1,66 @@
+.serviceBackground {
+  background-color: rgb(250, 91, 15);
+  text-align: center;
+  padding-bottom: 40px;
+}
+.serviceHeader {
+  margin: 0px;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: cursive;
+  padding-top: 50px;
+}
+.title {
+  font-family: cursive;
+  font-weight: bold;
+}
+.serviceP {
+  font-size: 15px;
+  font-family: cursive;
+}
+@media screen and (max-width: 768px) {
+  .servicesContainer {
+    grid-template-columns: 25% 25%;
+    grid-template-areas: "one two" "three four" "five six";
+  }
+  .service4 {
+    grid-area: four;
+    padding-top: 30px;
+  }
+  .service1 {
+    padding-top: 30px;
+  }
+  .service2 {
+    padding-top: 30px;
+  }
+  .service3 {
+    padding-top: 30px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .servicesContainer {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 33.3333% 33.3333% 33.3333%;
+    grid-template-areas: "one two three" "four five six";
+  }
+}
+.service1 {
+  grid-area: one;
+}
+.service2 {
+  grid-area: two;
+}
+.service3 {
+  grid-area: three;
+}
+.service4 {
+  grid-area: five;
+}
+
+.serviceImg {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}

@@ -1,9 +1,15 @@
-
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';  // Correct import path for LoginPage.js
-import EmployeeLoginPage from './pages/EmployeeLoginPage';  // Import EmployeeLoginPage
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage"; // Correct import path for LoginPage.js
+import EmployeeLoginPage from "./pages/EmployeeLoginPage"; // Import EmployeeLoginPage
 import Register from './pages/Register'; // Correct import path for Register.js
+import logo from "./logo.svg";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Quote from "./components/Quote";
+import About from "./components/About";
+import Services from "./components/Services";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -11,7 +17,6 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/employee-login" element={<EmployeeLoginPage />} />
-        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
