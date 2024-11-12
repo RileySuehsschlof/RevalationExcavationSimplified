@@ -18,14 +18,7 @@ const EmployeeLoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   const response = await axios.post('http://localhost:5000/api/users/login', { emailOrUsername, password });
 
-    //   setToken(response.data.token);//Saving the token
-    //   setMessage('Login successful');
-    // } catch (error) {
-    //   setMessage('Invalid Username or Password')
-    // }
     try {
 
 

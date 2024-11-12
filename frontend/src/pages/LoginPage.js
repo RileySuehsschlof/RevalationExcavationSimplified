@@ -26,10 +26,13 @@ const LoginPage = () => {
       // localStorage.setItem('token', response.data.token);
       setToken(response.data.token);//Saving the token
 
-      setMessage('Login succesful')
+      setMessage('Login succesful, redirecting')
 
-      //sends you to the page after login
-      navigate('/');
+      //sends you to the page index after login
+      setTimeout(() => {
+        navigate('/');  // Redirect to admin page after login
+      }, 1500)
+
 
 
     } catch (error) {
