@@ -25,6 +25,7 @@ function GoogleMap() {
               const map = new window.google.maps.Map(
                 document.getElementById("map"),
                 {
+                  // map options/settings
                   zoom: 12,
                   center: destination,
                   streetViewControl: false,
@@ -97,6 +98,7 @@ function GoogleMap() {
     };
   }, []);
 
+  //for displaying directions
   function toggleRoute() {
     if (!userLocation) {
       setError("Unable to get your current location");
@@ -146,6 +148,7 @@ function GoogleMap() {
           width: "fit-content",
         }}
       >
+        {/* Displays based off state */}
         {showDirections ? "Hide Directions" : "Show Directions"}
       </button>
       {error && (
