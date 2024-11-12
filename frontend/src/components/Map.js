@@ -108,6 +108,7 @@ function GoogleMap() {
     setShowDirections(!showDirections);
 
     if (window.directionsService && window.directionsRenderer) {
+      //Sets up request for directions
       const request = {
         origin: userLocation,
         destination: destination,
@@ -115,12 +116,14 @@ function GoogleMap() {
       };
 
       if (showDirections) {
+        // Checks the state to determine if directions are shown
         window.directionsRenderer.setDirections({ routes: [] });
         window.map.setCenter(destination);
         window.map.setZoom(12);
       } else {
         window.directionsService.route(request, (result, status) => {
           if (status === window.google.maps.DirectionsStatus.OK) {
+            //window.directionsRender actualy renders the directions
             window.directionsRenderer.setDirections(result);
           } else {
             setError("Directions request failed due to " + status);
