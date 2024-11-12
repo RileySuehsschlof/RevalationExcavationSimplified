@@ -18,12 +18,12 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     try {
-
-
+      //sends the email
       const response = await axios.post('http://localhost:5000/api/users/login', { emailOrUsername, password });
 
-      // localStorage.setItem('token', response.data.token);
+
       setToken(response.data.token);//Saving the token
 
       setMessage('Login succesful, redirecting')

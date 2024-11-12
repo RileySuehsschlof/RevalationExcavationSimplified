@@ -9,8 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const EmployeeLoginPage = () => {
   const [employeeNumber, setEmployeeNumber] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [username, setUsername] = useState('');
+
   const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -24,13 +23,11 @@ const EmployeeLoginPage = () => {
 
       const response = await axios.post('http://localhost:5000/api/users/login', { emailOrUsername, password });
 
-      // localStorage.setItem('token', response.data.token);
       setToken(response.data.token);//Saving the token
 
-      // setMessage('Login succesful')
 
       // //sends you to the page after login
-      // navigate('/');
+
       setMessage('Login successful! Redirecting...');
 
       // Redirect the user to the admin page
@@ -61,27 +58,6 @@ const EmployeeLoginPage = () => {
               required
             />
           </div>
-          {/* <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div> */}
-
-          {/* <div className="input-group">
-            <label htmlFor="username">User Name</label>
-            <input
-              type="username"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div> */}
 
           {/* Input for Email or Username */}
           <div className="input-group">
