@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import '../styles/login.css';  // Importing the CSS file
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { setToken } from '../utils/auth';
+import { AuthContext } from '../utils/AuthContext';
+import { jwtDecode } from 'jwt-decode';
 
 const LoginPage = () => {
   const [emailOrUsername, setEmailOrUsername] = useState('');
@@ -13,6 +15,7 @@ const LoginPage = () => {
 
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
 
   const handleSubmit = async (e) => {
@@ -23,8 +26,18 @@ const LoginPage = () => {
       //sends the email
       const response = await axios.post('http://localhost:5000/api/users/login', { emailOrUsername, password });
 
+      const token = response.data.token;
+      console.log('Received token:', token);
+      console.log("hi");
+      setToken(token);//Saving the token
 
-      setToken(response.data.token);//Saving the token
+      try {
+        const decodedToken = jwtDecode(token);
+        console.log('Decoded token:', decodedToken); // Log the decoded token
+        setUser({ username: decodedToken.username });
+      } catch (decodingError) {
+        console.error('Error decoding token:', decodingError);
+      }
 
       setMessage('Login succesful, redirecting')
 

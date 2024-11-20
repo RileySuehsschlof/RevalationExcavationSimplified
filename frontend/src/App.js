@@ -7,19 +7,23 @@ import AdminPage from "./pages/AdminPage"; // Correct import path for Admin
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./pages/HomePage";
+import { AuthProvider } from './utils/AuthContext';  // Import the AuthProvider
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/employee-login" element={<EmployeeLoginPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/admin" element={<AdminPage />} />
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/employee-login" element={<EmployeeLoginPage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/admin" element={<AdminPage />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+
     </>
   );
 }
