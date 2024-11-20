@@ -12,16 +12,16 @@ function Navbar() {
 
   };
   const handleLogout = () => {
-    removeToken(); // Remove token from localStorage or wherever you store it
-    setUser(null)
+    removeToken(); // Remove token from localStorage
+    setUser(null);//update the global user in authContext
   };
 
 
   const { user, setUser } = useContext(AuthContext);
 
-  useEffect(() => {
-    // Force re-render when `user` changes
-  }, [user]);
+  // useEffect(() => {
+  //   // Force re-render when `user` changes
+  // }, [user]);
   console.log(user);
 
 

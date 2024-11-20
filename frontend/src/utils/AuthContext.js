@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
             // const decodedToken = jwt_decode(token);
             const decodedToken = jwtDecode(token);
             setUser({ username: decodedToken.username });
-            console.log(decodedToken)
+            // console.log(decodedToken)
         }
 
     }, []);
