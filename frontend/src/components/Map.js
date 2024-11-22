@@ -135,7 +135,7 @@ function GoogleMap() {
   return (
     <div style={{ position: "relative" }}>
       <div
-        ref={mapRef} // Attach the ref here
+        ref={mapRef}
         id="map"
         style={{ height: "400px", width: "100%" }}
       ></div>
