@@ -1,21 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { AuthContext } from '../utils/AuthContext';
-import { removeToken } from '../utils/auth';
+import { AuthContext } from "../utils/AuthContext";
+import { removeToken } from "../utils/auth";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-
   };
   const handleLogout = () => {
     removeToken(); // Remove token from localStorage
     setUser(null);//update the global user in authContext
   };
-
 
   const { user, setUser } = useContext(AuthContext);
 
@@ -24,14 +22,12 @@ function Navbar() {
   // }, [user]);
   console.log(user);
 
-
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="logo link">
           <div className="site-name">Revelation Excavation</div>
         </Link>
-
 
         <button
           className="hamburger"
@@ -41,25 +37,20 @@ function Navbar() {
           &#9776;
         </button>
 
-
         {/* if the user logged in display username */}
         {user ? (
           <div className="user-info">
-
             <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-
-
               {/* should be replaced with link to user page */}
               <li className="nav-item">
                 <button className="nav-link nav-button">{user.username}</button>
               </li>
 
-
-
               <li className="nav-item">
-                <button onClick={handleLogout} className="nav-link nav-button">Logout</button>
+                <button onClick={handleLogout} className="nav-link nav-button">
+                  Logout
+                </button>
               </li>
-
             </ul>
           </div>
         ) : (
@@ -74,10 +65,8 @@ function Navbar() {
                 <div className="nav-link">Login</div>
               </li>
             </Link>
-
           </ul>
         )}
-
       </div>
     </nav>
   );

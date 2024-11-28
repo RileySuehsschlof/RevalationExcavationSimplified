@@ -7,6 +7,7 @@ function GoogleMap() {
   const [error, setError] = useState(null);
   const mapRef = useRef(null); // Use ref to ensure DOM availability
 
+  //location of business
   const destination = { lat: 52.69778300991096, lng: -113.46285083337204 };
 
   useEffect(() => {
@@ -31,6 +32,7 @@ function GoogleMap() {
             // Initialize map
             if (window.google) {
               const map = new window.google.maps.Map(mapElement, {
+                //map settings
                 zoom: 12,
                 center: destination,
                 streetViewControl: false,
@@ -135,7 +137,7 @@ function GoogleMap() {
   return (
     <div style={{ position: "relative" }}>
       <div
-        ref={mapRef} // Attach the ref here
+        ref={mapRef}
         id="map"
         style={{ height: "400px", width: "100%" }}
       ></div>
