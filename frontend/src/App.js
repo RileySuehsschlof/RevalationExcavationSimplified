@@ -4,7 +4,6 @@ import LoginPage from "./pages/LoginPage"; // Correct import path for LoginPage.
 import EmployeeLoginPage from "./pages/EmployeeLoginPage"; // Import EmployeeLoginPage
 import Register from './pages/RegisterPage'; // Correct import path for Register.js
 import AdminPage from "./pages/AdminPage"; // Correct import path for Admin
-import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import { AuthProvider } from './utils/AuthContext';  // Import the AuthProvider
