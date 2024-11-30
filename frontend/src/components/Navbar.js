@@ -20,7 +20,6 @@ function Navbar() {
   // useEffect(() => {
   //   // Force re-render when `user` changes
   // }, [user]);
-  console.log(user);
 
   return (
     <nav className="navbar">

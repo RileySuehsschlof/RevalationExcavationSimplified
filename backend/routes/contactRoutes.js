@@ -9,7 +9,7 @@ const router = express.Router();
 const transporter = nodemailer.createTransport({
   service: 'gmail', // Use your preferred email service
   auth: {
-    user: process.env.EMAIL_USER,
+    user: process.env.COMPANY_EMAIL,
     pass: process.env.EMAIL_PASS,
   },
 });
@@ -26,22 +26,25 @@ router.post('/', async (req, res) => {
 
   try {
     if (method === 'email') {
-      // Send email
+      // Send email to the company email
       await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: 'Customer Inquiry',
-        text: message,
+        from: email, // The user's email as the sender
+        to: process.env.COMPANY_EMAIL, // Company's email
+        subject: 'New Customer Inquiry',
+        text: `Message from: ${email}
+
+               ${message}`,
       });
-      res.status(200).json({ message: 'Email sent successfully' });
+      res.status(200).json({ message: 'Email sent successfully to the company' });
     } else if (method === 'sms') {
-      // Send SMS
+      // Send SMS to the company phone number
       await twilioClient.messages.create({
-        body: message,
-        from: process.env.TWILIO_PHONE_NUMBER,
-        to: phone,
+        body: `New message from ${phone || 'unknown phone'}:
+               ${message}`,
+        from: process.env.TWILIO_PHONE_NUMBER, // Twilio's phone number
+        to: process.env.COMPANY_PHONE_NUMBER, // Company's phone number
       });
-      res.status(200).json({ message: 'SMS sent successfully' });
+      res.status(200).json({ message: 'SMS sent successfully to the company' });
     }
   } catch (error) {
     console.error(error);
