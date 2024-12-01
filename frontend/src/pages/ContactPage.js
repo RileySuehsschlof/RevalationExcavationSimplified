@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Navbar from "../components/Navbar";
 
 function ContactForm() {
@@ -19,13 +20,14 @@ function ContactForm() {
     setStatus({ success: null, message: '' });
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('http://localhost:5000/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const result = await response.json();
+      console.log(response);
 
       if (response.ok) {
         setStatus({ success: true, message: result.message || 'Message sent successfully!' });
