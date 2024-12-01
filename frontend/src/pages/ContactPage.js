@@ -20,40 +20,25 @@ function ContactForm() {
     setStatus({ success: null, message: '' });
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-      console.log(response);
-
-      if (response.ok) {
-        setStatus({ success: true, message: result.message || 'Message sent successfully!' });
-        setFormData({ message: '', email: '', phone: '', method: 'email' });
-      } else {
-        setStatus({ success: false, message: result.error || 'Failed to send message.' });
-      }
+      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      setStatus({ success: true, message: response.data.message || 'Message sent successfully!' });
+      setFormData({ message: '', email: '', phone: '', method: 'email' });
     } catch (error) {
-      setStatus({ success: false, message: 'Network error. Please try again.' });
+      const errorMessage = error.response?.data?.error || 'Failed to send message.';
+      setStatus({ success: false, message: errorMessage });
     }
   };
 
-  // (currently doesn't work)
-  /* Fetches user data if we want to use the currently logged in user's email/stored phone number
+  /*
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('/api/user/profile');
-        const data = await response.json();
-        if (response.ok) {
-          setFormData((prev) => ({
-            ...prev,
-            email: data.email || '',
-            phone: data.phone || '',
-          }));
-        }
+        const response = await axios.get('/api/user/profile');
+        setFormData((prev) => ({
+          ...prev,
+          email: response.data.email || '',
+          phone: response.data.phone || '',
+        }));
       } catch (error) {
         console.error('Error fetching user data:', error);
       }

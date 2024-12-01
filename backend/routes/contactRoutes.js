@@ -28,8 +28,9 @@ router.post('/', async (req, res) => {
     if (method === 'email') {
       // Send email to the company email
       await transporter.sendMail({
-        from: email, // The user's email as the sender
+        from: `"Support" <${process.env.COMPANY_EMAIL}>`, // The user's email as the sender
         to: process.env.COMPANY_EMAIL, // Company's email
+        replyTo: email,
         subject: 'New Customer Inquiry',
         text: `Message from: ${email}
 
