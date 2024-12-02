@@ -20,6 +20,7 @@ function ContactForm() {
     setStatus({ success: null, message: '' });
 
     try {
+      // Send form data to backend
       const response = await axios.post('http://localhost:5000/api/contact', formData);
       setStatus({ success: true, message: response.data.message || 'Message sent successfully!' });
       setFormData({ message: '', email: '', phone: '', method: 'email' });
@@ -29,6 +30,7 @@ function ContactForm() {
     }
   };
 
+  // Gets user email from token and then autofil email field (TO-DO) --------------------------------------------
   /*
   useEffect(() => {
     const fetchUserData = async () => {
@@ -125,7 +127,7 @@ function ContactForm() {
   );
 }
 
-// Same styles as before
+// Styles
 const formStyle = { maxWidth: '400px', margin: 'auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' };
 const fieldStyle = { marginBottom: '15px' };
 const inputStyle = { width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' };
