@@ -17,7 +17,7 @@ const registerUser = async (req, res) => {
 //this is to login an existing user
 const loginUser = async (req, res) => {
   const { emailOrUsername, password } = req.body;
-
+  //checking to see if we are missing a field
   if (!emailOrUsername || !password) {
     return res
       .status(400)
@@ -27,6 +27,7 @@ const loginUser = async (req, res) => {
   try {
     let user;
 
+    //checks to see if we were passed a email or username and then finds based off of that
     if (emailOrUsername.includes("@")) {
       user = await User.findOne({ email: emailOrUsername });
       if (!user) return res.status(400).json({ message: "Invalid Email" });

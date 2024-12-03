@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import '../styles/login.css';  // Import your CSS file
+import '../styles/login.css';  // Importing our CSS file
 
 function ContactForm() {
   const [formData, setFormData] = useState({
