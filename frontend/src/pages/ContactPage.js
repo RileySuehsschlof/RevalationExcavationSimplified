@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 
@@ -29,26 +29,6 @@ function ContactForm() {
       setStatus({ success: false, message: errorMessage });
     }
   };
-
-  // Gets user email from token and then autofil email field (TO-DO) --------------------------------------------
-  /*
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get('/api/user/profile');
-        setFormData((prev) => ({
-          ...prev,
-          email: response.data.email || '',
-          phone: response.data.phone || '',
-        }));
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-  */
 
   return (
     <>
