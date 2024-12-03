@@ -20,7 +20,6 @@ function Navbar() {
   // useEffect(() => {
   //   // Force re-render when `user` changes
   // }, [user]);
-  console.log(user);
 
   return (
     <nav className="navbar">
@@ -51,6 +50,9 @@ function Navbar() {
                   Logout
                 </button>
               </li>
+              <Link to="/contact" className="link">
+                <button className="nav-link nav-button">Contact Us</button>
+              </Link>
             </ul>
           </div>
         ) : (
