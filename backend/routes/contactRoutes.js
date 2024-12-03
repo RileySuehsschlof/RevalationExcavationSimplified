@@ -20,18 +20,17 @@ router.post('/', async (req, res) => {
 
   try {
     if (method === 'email') {
-      // Send email to the company email
+      // Send email to the company email via sendgrid
       await sgMail.send({
         to: process.env.COMPANY_EMAIL,
         from: process.env.COMPANY_EMAIL,
         subject: 'New Customer Inquiry',
         text: `Message from: ${email || 'Unknown email'}
-
           ${message}`,
       });
       res.status(200).json({ message: 'Email sent successfully to the company' });
     } else if (method === 'sms') {
-      // Send SMS to the company phone number
+      // Send SMS to the company phone number via Twilio
       await twilioClient.messages.create({
         body: `New message from ${phone || 'unknown phone'}:
                ${message}`,

@@ -26,6 +26,7 @@ function ContactForm() {
       setStatus({ success: true, message: response.data.message || 'Message sent successfully!' });
       setFormData({ message: '', email: '', phone: '', method: 'email' });
     } catch (error) {
+      // Uses optional chaining to make error message
       const errorMessage = error.response?.data?.error || 'Failed to send message.';
       setStatus({ success: false, message: errorMessage });
     }
