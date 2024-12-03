@@ -130,3 +130,22 @@ button:hover {
 .employee-link a:hover {
   text-decoration: underline;
 }
+
+.login-form textarea {
+  /* Only allow vertical resizing */
+  resize: vertical;
+  /* Min and max height of text area */
+  min-height: 40px;
+  max-height: 200px;
+  width: 90%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: lightgrey;
+}
+
+.login-form select {
+  height: 40px;
+  width: 30%;
+}
