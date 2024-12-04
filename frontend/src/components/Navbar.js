@@ -67,6 +67,9 @@ function Navbar() {
                 <div className="nav-link">Login</div>
               </li>
             </Link>
+            <Link to="/contact" className="link">
+              <button className="nav-link nav-button">Contact Us</button>
+            </Link>
           </ul>
         )}
       </div>
