@@ -4,13 +4,13 @@ const bcrypt = require("bcryptjs");
 
 //this is to register a new user
 const registerUser = async (req, res) => {
-  const { username, password, email } = req.body;
+  const { firstName, lastName, password, email } = req.body;
 
-  const userExists = await User.findOne({ username });
+  const userExists = await User.findOne({ email });
   if (userExists)
     return res.status(201).json({ message: "User already exists" });
 
-  const user = await User.create({ username, password, email });
+  const user = await User.create({ firstName, lastName, password, email });
   return res.status(201).json({ message: "User registered successfully" });
 };
 
@@ -43,7 +43,7 @@ const loginUser = async (req, res) => {
 
     //if everything is correct, generate a jwt token and send it back to the user
     const token = jwt.sign(
-      { id: user.id, username: user.username },
+      { id: user.id, firstName: user.firstName, lastName: user.lastName },
       process.env.JWT_SECRET,
       {
         expiresIn: "15m",

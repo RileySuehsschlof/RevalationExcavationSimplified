@@ -5,7 +5,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Register = () => {
-    const [username, setuserName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -14,7 +15,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/users/register', { username, password, email });
+            const response = await axios.post('http://localhost:5000/api/users/register', { firstName, lastName, password, email });
             setMessage(response.data.message);
 
             setTimeout(() => {
@@ -35,11 +36,21 @@ const Register = () => {
 
                         <form onSubmit={handleSubmit} className="login-form">
                             <div className="input-group">
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="firstName">First Name</label>
                                 <input type="text"
-                                    placeholder='Username'
-                                    value={username}
-                                    onChange={(e) => setuserName(e.target.value)}
+                                    placeholder='First Name'
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    required
+                                />
+                            </div>
+
+                            <div className="input-group">
+                                <label htmlFor="lastName">Last Name</label>
+                                <input type="text"
+                                    placeholder='Last Name'
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
                                     required
                                 />
                             </div>
