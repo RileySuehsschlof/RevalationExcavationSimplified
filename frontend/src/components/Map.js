@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function GoogleMap() {
   const apiKey = process.env.REACT_APP_MAP_KEY;
   const [showDirections, setShowDirections] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
   const [error, setError] = useState(null);
+  const mapRef = useRef(null); // Use ref to ensure DOM availability
 
+  //location of business
   const destination = { lat: 52.69778300991096, lng: -113.46285083337204 };
 
   useEffect(() => {
     function initMap() {
-      // First get the user's location
+      const mapElement = mapRef.current;
+
+      if (!mapElement) {
+        setError("Map element not found!");
+        return;
+      }
+
+      // Get the user's location
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -20,21 +29,19 @@ function GoogleMap() {
             };
             setUserLocation(userPos);
 
-            // Initialize map with user's location
+            // Initialize map
             if (window.google) {
-              const map = new window.google.maps.Map(
-                document.getElementById("map"),
-                {
-                  zoom: 12,
-                  center: destination,
-                  streetViewControl: false,
-                  fullscreenControl: false,
-                  mapTypeId: "roadmap",
-                  mapTypeControl: false,
-                }
-              );
+              const map = new window.google.maps.Map(mapElement, {
+                //map settings
+                zoom: 12,
+                center: destination,
+                streetViewControl: false,
+                fullscreenControl: false,
+                mapTypeId: "roadmap",
+                mapTypeControl: false,
+              });
 
-              // Add marker for user's location
+              // Add markers
               new window.google.maps.Marker({
                 position: userPos,
                 map: map,
@@ -49,14 +56,13 @@ function GoogleMap() {
                 title: "Your Location",
               });
 
-              // Add marker for destination
               new window.google.maps.Marker({
                 position: destination,
                 map: map,
                 title: "Destination",
               });
 
-              // Save map and directions-related objects to window
+              // Set up directions service and renderer
               window.map = map;
               window.directionsService =
                 new window.google.maps.DirectionsService();
@@ -64,7 +70,7 @@ function GoogleMap() {
                 new window.google.maps.DirectionsRenderer();
               window.directionsRenderer.setMap(map);
 
-              // Initially hide directions
+              // Hide directions initially
               window.directionsRenderer.setDirections({ routes: [] });
             }
           },
@@ -78,7 +84,7 @@ function GoogleMap() {
           }
         );
       } else {
-        setError("Geolocation is not supported by your browser");
+        setError("Geolocation is not supported by your browser.");
       }
     }
 
@@ -88,14 +94,14 @@ function GoogleMap() {
     script.async = true;
     script.defer = true;
 
-    window.initMap = initMap;
+    window.initMap = initMap; // Set the callback
     document.head.appendChild(script);
 
     return () => {
       delete window.initMap;
       document.head.removeChild(script);
     };
-  }, []);
+  }, [apiKey]);
 
   function toggleRoute() {
     if (!userLocation) {
@@ -103,7 +109,7 @@ function GoogleMap() {
       return;
     }
 
-    setShowDirections(!showDirections);
+    setShowDirections((prev) => !prev);
 
     if (window.directionsService && window.directionsRenderer) {
       const request = {
@@ -130,7 +136,11 @@ function GoogleMap() {
 
   return (
     <div style={{ position: "relative" }}>
-      <div id="map" style={{ height: "400px", width: "100%" }}></div>
+      <div
+        ref={mapRef}
+        id="map"
+        style={{ height: "400px", width: "100%" }}
+      ></div>
       <button
         onClick={toggleRoute}
         style={{

@@ -1,5 +1,5 @@
 .serviceBackground {
-  background-color: rgb(250, 91, 15);
+  background-color: lightgrey;
   text-align: center;
   padding-bottom: 40px;
 }
@@ -7,7 +7,7 @@
   margin: 0px;
   font-weight: bold;
   font-size: 30px;
-  font-family: cursive;
+  font-family: calibri;
   padding-top: 50px;
 }
 .title {
@@ -16,7 +16,7 @@
 }
 .serviceP {
   font-size: 15px;
-  font-family: cursive;
+  font-family: calibri;
 }
 @media screen and (max-width: 768px) {
   .servicesContainer {

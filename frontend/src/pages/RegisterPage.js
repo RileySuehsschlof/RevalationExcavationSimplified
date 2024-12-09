@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -8,12 +9,17 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/api/users/register', { username, password, email });
             setMessage(response.data.message);
+
+            setTimeout(() => {
+                navigate('/');  // Redirect to main page after login
+            }, 1500)
 
         } catch (error) {
             setMessage(error.response.data.error);
